@@ -29,7 +29,6 @@ def generateKeys(bottomRange=100, topRange=500):
 		e = rand.randint(2, phi - 1)
 	n = p * q
 	publicKey = [n, e]
-	primes = [i for i in range(50, 500) if is_prime(i)]
 	d = pow(e, -1, phi)
 	privateKey = [n, d]
 	return [publicKey, privateKey]

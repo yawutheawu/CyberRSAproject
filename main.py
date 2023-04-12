@@ -1,4 +1,4 @@
-#Derek Johnson & Maykl Yakubovsky 
+#Derek Johnson & Maykl Yakubovsky
 #2/14/2023 Cybersecurity Project
 import RSAdemo
 import randomBruteForce
@@ -16,11 +16,11 @@ def struct():
 		print("Please input a number")
 		struct()
 	if (text == 1):
-		keyPair = RSAdemo.generateKeys()
+		keyPair = RSAdemo.generateKeys(250, 500)
 		public_key = keyPair[0]
 		private_key = keyPair[1]
 		print(keyPair)
-		message = "The Linux Ever"
+		message = "The deciphered ciphered and cipher"
 		encrypted = RSAdemo.encryptRSA(public_key, message)
 		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
 		str_dec = ""
@@ -32,8 +32,8 @@ def struct():
 		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
 		print("Decrypted Message: " + str(decrypted))
 	elif (text == 2):
-		SenderKeypair = RSAdemo.generateKeys()
-		RecieverKeypair = RSAdemo.generateKeys()
+		SenderKeypair = RSAdemo.generateKeys(250, 500)
+		RecieverKeypair = RSAdemo.generateKeys(250, 500)
 		print()
 		print("Person 1 N: " + str(SenderKeypair[0][0]))
 		print("Person 1 public key: " + str(SenderKeypair[0][1]))
@@ -61,8 +61,8 @@ def struct():
 			while (not broken):
 				broken = randomBruteForce.makeGuess()
 		elif (text == 2):
-			realText = "spoiler alert, numbers are sometimes real and sometimes not"
-			keyPair = RSAdemo.generateKeys(1000, 5000)
+			realText = r'Hello'
+			keyPair = RSAdemo.generateKeys(250, 500)
 			publicKey = keyPair[0]
 			private_key = keyPair[1]  #just in case
 			cipherText = RSAdemo.encryptRSA(publicKey, realText)

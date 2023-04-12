@@ -1,4 +1,6 @@
 import RSAdemo
+import time
+import randomBruteForce
 
 personalKeypair = []
 recipentKeypair = []
@@ -31,6 +33,25 @@ def userloop_structure():
 			userloop_structure()
 		else:
 			print("Alright, have a nice day!")
+	elif "break it" in userChoice:
+		try:
+			N = int(input("What is the N in the public key? "))
+			e = int(input("What is the e in the public key? "))
+			publicKey = [N, e]
+			cipherText = input("What is the ciphertext? ")
+			cipherText = cipherText.replace("[", "")
+			cipherText = cipherText.replace("]", "")
+			cipherText = cipherText.replace(" ", "")
+			cipherText = cipherText.split(",")
+			cipherList = []
+			#escape characters
+			for i in cipherText:
+				cipherList.append(i)
+		except:
+			print("Something went wrong")
+			userloop_structure()
+		print("The brute forced text is " +
+		      str(RSAdemo.primeGuesser(cipherList, publicKey)))
 	else:
 		text = input("What is the text you would like to decrypt: ")
 		if "[" in text:
@@ -50,6 +71,7 @@ def userloop_structure():
 				userloop_structure()
 			else:
 				print("Alright, have a nice day!")
+				time.sleep(5)
 		else:
 			print("The inputted text was not a list, and therefore cannot be decrypted")
 			userloop_structure()
