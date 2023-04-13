@@ -5,6 +5,7 @@ import randomBruteForce
 personalKeypair = []
 recipentKeypair = []
 
+formats = ["[", "]", " "]
 
 def inputs():
 	try:
@@ -39,11 +40,10 @@ def userloop_structure():
 			e = int(input("What is the e in the public key? "))
 			publicKey = [N, e]
 			cipherText = input("What is the ciphertext? ")
-			cipherText = cipherText.replace("[", "")
-			cipherText = cipherText.replace("]", "")
-			cipherText = cipherText.replace(" ", "")
-			cipherText = cipherText.split(",")
-			cipherList = []
+			for k in formats:#changed also indent (?)
+				cipherText = cipherText.replace(k, "")
+				cipherText = cipherText.split(",")
+				cipherList = []
 			#escape characters
 			for i in cipherText:
 				cipherList.append(i)
@@ -55,10 +55,9 @@ def userloop_structure():
 	else:
 		text = input("What is the text you would like to decrypt: ")
 		if "[" in text:
-			text = text.replace("[", "")
-			text = text.replace("]", "")
-			text = text.replace(" ", "")
-			text = text.split(",")
+			for k in format:#changed
+				text = text.replace(k, "")
+				text = text.split(",")
 			texted = []
 			for i in text:
 				texted.append(int(i))
@@ -71,7 +70,7 @@ def userloop_structure():
 				userloop_structure()
 			else:
 				print("Alright, have a nice day!")
-				time.sleep(5)
+				time.sleep(5)#zzz... XD
 		else:
 			print("The inputted text was not a list, and therefore cannot be decrypted")
 			userloop_structure()
