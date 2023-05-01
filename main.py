@@ -13,7 +13,7 @@ x = list(timeCalc.rangeDict.keys())
 print(x)
 temp = []
 for i in x:
-	temp.append(int(x))
+	temp.append(int(i))
 x = temp
 y = list(timeCalc.rangeDict.values())
 plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
