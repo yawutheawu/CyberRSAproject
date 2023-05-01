@@ -3,7 +3,20 @@
 import RSAdemo
 import randomBruteForce
 import Messages as m1
+import time
+import matplotlib.pylab as plt
+import timeCalc
 #RSA Demo
+
+print(timeCalc.rangeDict)
+x = list(timeCalc.rangeDict.keys())
+print(x)
+temp = []
+for i in x:
+	temp.append(int(x))
+x = temp
+y = list(timeCalc.rangeDict.values())
+plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
 
 
 def struct():
@@ -16,21 +29,29 @@ def struct():
 		print("Please input a number")
 		struct()
 	if (text == 1):
+		startTime = time.time()
 		keyPair = RSAdemo.generateKeys(250, 500)
 		public_key = keyPair[0]
 		private_key = keyPair[1]
 		print(keyPair)
-		message = "The deciphered ciphered and cipher"
+		message = "030-88-62**"
 		encrypted = RSAdemo.encryptRSA(public_key, message)
 		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
 		str_dec = ""
 		for i in decrypted:
 			str_dec += i
+		endTime = time.time()
+		totalTime = endTime - startTime
 		print("Actual Message: " + message)
 		encrypted = RSAdemo.encryptRSA(public_key, message)
 		print("Encrypted Message: " + str(encrypted))
 		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
 		print("Decrypted Message: " + str(decrypted))
+		print("Decrypted and concatenated: ", end="")
+		for i in decrypted:
+			print(i, end="")
+		print()
+		print('Execution time: ' + str(round(totalTime, 4)) + " seconds")
 	elif (text == 2):
 		SenderKeypair = RSAdemo.generateKeys(250, 500)
 		RecieverKeypair = RSAdemo.generateKeys(250, 500)
@@ -61,11 +82,20 @@ def struct():
 			while (not broken):
 				broken = randomBruteForce.makeGuess()
 		elif (text == 2):
-			realText = r'Hello'
-			keyPair = RSAdemo.generateKeys(250, 500)
+			realText = r'030-88-62**'
+			keyPair = RSAdemo.generateKeys(5000, 10000)
 			publicKey = keyPair[0]
 			private_key = keyPair[1]  #just in case
 			cipherText = RSAdemo.encryptRSA(publicKey, realText)
+			print("Cipertext: " + str(cipherText))
+			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
+		elif (text == 2):
+			realText = r'030-88-62**'
+			keyPair = RSAdemo.generateKeys(5000, 10000)
+			publicKey = keyPair[0]
+			private_key = keyPair[1]  #just in case
+			cipherText = RSAdemo.encryptRSA(publicKey, realText)
+			print("Cipertext: " + str(cipherText))
 			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
 		else:
 			print("not an option")
