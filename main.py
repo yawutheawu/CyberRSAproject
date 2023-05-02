@@ -16,6 +16,9 @@ for i in x:
 x = temp
 y = list(timeCalc.rangeDict.values())
 plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
+plt.ylabel('Time (seconds)')
+plt.xlabel("N value (p * q)")
+plt.show()
 
 
 def struct():
