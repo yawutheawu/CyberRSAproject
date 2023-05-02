@@ -41,7 +41,8 @@ def struct():
 			print(i, end="")
 		print()
 		print('Execution time: ' + str(round(totalTime, 4)) + " seconds")
-		timeCalc.addTo(public_key[0],totalTime)
+		timeCalc.addTo(public_key[0], totalTime)
+		struct()
 	elif (text == 2):
 		SenderKeypair = RSAdemo.generateKeys(250, 500)
 		RecieverKeypair = RSAdemo.generateKeys(250, 500)
