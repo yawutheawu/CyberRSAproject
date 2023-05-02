@@ -4,28 +4,12 @@ import RSAdemo
 import randomBruteForce
 import Messages as m1
 import time
-import matplotlib.pylab as plt
-import timeCalc
 #RSA Demo
-
-print(timeCalc.rangeDict)
-x = list(timeCalc.rangeDict.keys())
-temp = []
-for i in x:
-	temp.append(int(i))
-x = temp
-y = list(timeCalc.rangeDict.values())
-plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
-plt.ylabel('Time (seconds)')
-plt.xlabel("N value (p * q)")
-plt.xticks(range(min(x) - 1, max(x) + 1))
-plt.yticks(range(min(y) - 1, max(y) + 1))
-plt.show()
 
 
 def struct():
 	text = input(
-	 "Are you running demo(1), Generating messenger keypairs(2), messager(3), or random brute force(4)?: "
+	 "Are you running demo(1), Generating messenger keypairs(2), messager(3), random brute force(4), or do a runtime estimate(5)?: "
 	)
 	try:
 		text = int(text)
@@ -104,6 +88,8 @@ def struct():
 		else:
 			print("not an option")
 			struct()
+	elif (text == 5):
+		import timeCalc
 	else:
 		print("Not an option")
 		struct()

@@ -1,4 +1,5 @@
 import RSAdemo
+import matplotlib.pylab as plt
 import randomBruteForce
 import Messages as m1
 import time
@@ -56,3 +57,17 @@ decrypted = RSAdemo.decryptRSA(private_key, encrypted)
 endHigh = time.time()
 HighTax = endHigh-startHigh
 rangeDict[str(1009*1013)] = HighTax
+
+print(rangeDict)
+x = list(rangeDict.keys())
+temp = []
+for i in x:
+	temp.append(int(i))
+x = temp
+y = list(rangeDict.values())
+plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
+plt.ylabel('Time (seconds)')
+plt.xlabel("N value (p * q)")
+plt.xticks(range(min(x) - 1, max(x) + 1))
+plt.yticks(range(min(y) - 1, max(y) + 1))
+plt.show()
