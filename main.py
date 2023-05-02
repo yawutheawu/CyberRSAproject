@@ -90,6 +90,7 @@ def struct():
 			struct()
 	elif (text == 5):
 		import timeCalc
+		struct()
 	else:
 		print("Not an option")
 		struct()
