@@ -10,7 +10,6 @@ import timeCalc
 
 print(timeCalc.rangeDict)
 x = list(timeCalc.rangeDict.keys())
-print(x)
 temp = []
 for i in x:
 	temp.append(int(i))
