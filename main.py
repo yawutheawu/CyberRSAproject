@@ -60,6 +60,7 @@ def struct():
 	elif (text == 3):
 		m1.inputs()
 		m1.userloop_structure()
+		struct()
 	elif (text == 4):
 		text = input(
 		 "Do you want random guesser(1) or factor based brute force(2)?: ")
@@ -72,6 +73,7 @@ def struct():
 			broken = False
 			while (not broken):
 				broken = randomBruteForce.makeGuess()
+			struct()
 		elif (text == 2):
 			realText = r'030-88-62**'
 			keyPair = RSAdemo.generateKeys(5000, 10000)
@@ -80,6 +82,7 @@ def struct():
 			cipherText = RSAdemo.encryptRSA(publicKey, realText)
 			print("Cipertext: " + str(cipherText))
 			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
+			struct()
 		elif (text == 2):
 			realText = r'030-88-62**'
 			keyPair = RSAdemo.generateKeys(5000, 10000)
@@ -88,6 +91,7 @@ def struct():
 			cipherText = RSAdemo.encryptRSA(publicKey, realText)
 			print("Cipertext: " + str(cipherText))
 			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
+			struct()
 		else:
 			print("not an option")
 			struct()

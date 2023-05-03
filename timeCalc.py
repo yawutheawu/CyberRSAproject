@@ -9,12 +9,14 @@ import time
 #best fit a curve and then store the equation to estimate future times
 rangeDict = {}
 
+
 def addTo(Key, Value):
-	rangeDict[Key] = Value
+	rangeDict[str(Key)] = Value
+
 
 def estimate():
 	print("Starting Estimations")
-	
+
 	startLow = time.time()
 	keyPair = RSAdemo.generateKeys(250, 258)
 	public_key = keyPair[0]
@@ -30,7 +32,7 @@ def estimate():
 	endLow = time.time()
 	LowTax = endLow - startLow
 	rangeDict[str(251 * 257)] = LowTax
-	
+
 	startMid = time.time()
 	keyPair = RSAdemo.generateKeys(500, 510)
 	public_key = keyPair[0]
@@ -46,7 +48,7 @@ def estimate():
 	endMid = time.time()
 	MidTax = endMid - startMid
 	rangeDict[str(503 * 509)] = MidTax
-	
+
 	startHigh = time.time()
 	keyPair = RSAdemo.generateKeys(1000, 1015)
 	public_key = keyPair[0]
@@ -62,17 +64,20 @@ def estimate():
 	endHigh = time.time()
 	HighTax = endHigh - startHigh
 	rangeDict[str(1009 * 1013)] = HighTax
-	
-	print(rangeDict)
+
 	x = list(rangeDict.keys())
 	temp = []
 	for i in x:
 		temp.append(int(i))
 	x = temp
-	y = list(rangeDict.values())
+	x.sort(reverse=True)
+	print(x)
+	print(rangeDict)
+	y = []
+	for i in x:
+		y.append(int(rangeDict[str(i)]))
 	plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
 	plt.ylabel('Time (seconds)')
 	plt.xlabel("N value (p * q)")
 	plt.xticks(x)
 	plt.show()
-	
