@@ -1,9 +1,9 @@
-#Derek Johnson, Maykl Yakubovsky Cybersecurity Research Project 2/17/23
 #Brute Force Decrypting RSA
 
 #https://www.di-mgt.com.au/rsa_alg.html
 
 import RSAdemo
+import random
 
 message = "Unciphered"
 real_public_key = [21473, 3265]  #generated numbers
