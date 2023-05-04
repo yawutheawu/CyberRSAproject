@@ -5,7 +5,6 @@ import randomBruteForce
 personalKeypair = []
 recipentKeypair = []
 
-formats = ["[", "]", " "]
 
 def inputs():
 	try:
@@ -30,34 +29,37 @@ def userloop_structure():
 		text = input("What is the text you would like to encrypt: ")
 		print("The ciphertext to send is: " +
 		      str(RSAdemo.encryptRSA(recipentKeypair, text)))
-		if ("y" in input("do you have more to encrypt or decrypt? ")):
+		if ("y" in input("\nDo you have more to encrypt or decrypt? ") or "Y" in input("\nDo you have more to encrypt or decrypt? ")):
 			userloop_structure()
 		else:
-			print("Alright, have a nice day!")
+			print("\nAlright, have a nice day!")
 	elif "break it" in userChoice:
 		try:
 			N = int(input("What is the N in the public key? "))
 			e = int(input("What is the e in the public key? "))
 			publicKey = [N, e]
 			cipherText = input("What is the ciphertext? ")
-			for k in formats:#changed also indent (?)
-				cipherText = cipherText.replace(k, "")
+			if "[" in cipherText:
+				cipherText = cipherText.replace("]", "")
+				cipherText = cipherText.replace("[", "")
+				cipherText = cipherText.replace(" ", "")
 				cipherText = cipherText.split(",")
 				cipherList = []
-			#escape characters
+				#escape characters
 			for i in cipherText:
 				cipherList.append(i)
+			print("The brute forced text is " +
+		      str(randomBruteForce.primeGuesser(cipherList, publicKey)))
 		except:
-			print("Something went wrong")
+			print("Something Has Failed, Please Try Again")
 			userloop_structure()
-		print("The brute forced text is " +
-		      str(RSAdemo.primeGuesser(cipherList, publicKey)))
 	else:
 		text = input("What is the text you would like to decrypt: ")
 		if "[" in text:
-			for k in format:#changed
-				text = text.replace(k, "")
-				text = text.split(",")
+			text = text.replace('[', "")
+			text = text.replace["]",'']
+			text = text.replace[" ",'']
+			text = text.split(",")
 			texted = []
 			for i in text:
 				texted.append(int(i))
@@ -66,11 +68,11 @@ def userloop_structure():
 			for i in uncipher:
 				strUncipher += str(i)
 			print("The decrypted text is: " + strUncipher)
-			if ("y" in input("do you have more to encrypt or decrypt? ")):
+			if ("y" in input("do you have more to encrypt or decrypt? ") or "Y" in input("do you have more to encrypt or decrypt? ")):
 				userloop_structure()
 			else:
 				print("Alright, have a nice day!")
-				time.sleep(5)#zzz... XD
+				time.sleep(5)
 		else:
 			print("The inputted text was not a list, and therefore cannot be decrypted")
 			userloop_structure()

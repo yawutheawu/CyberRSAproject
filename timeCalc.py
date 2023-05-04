@@ -1,5 +1,8 @@
 import RSAdemo
 import matplotlib.pylab as plt
+import numpy as np
+from scipy.optimize import curve_fit
+from scipy.interpolate import make_interp_spline, BSpline
 import randomBruteForce
 import Messages as m1
 import time
@@ -12,6 +15,10 @@ rangeDict = {}
 
 def addTo(Key, Value):
 	rangeDict[str(Key)] = Value
+
+
+def test(x, a, b):
+	return a * np.exp(b * x)
 
 
 def estimate():
@@ -71,13 +78,17 @@ def estimate():
 		temp.append(int(i))
 	x = temp
 	x.sort(reverse=True)
-	print(x)
-	print(rangeDict)
 	y = []
 	for i in x:
 		y.append(int(rangeDict[str(i)]))
-	plt.plot(x, y, color='blue', marker='o', linewidth=2, markersize=12)
+	array = np.array(x)
+	equation = 3.45 * np.exp(1.334 * array) + np.random.normal(size=len(array))
+	param, param_cov = curve_fit(test, array, equation)
+	ans = (param[0] * (np.exp(param[1] * x)))
 	plt.ylabel('Time (seconds)')
 	plt.xlabel("N value (p * q)")
 	plt.xticks(x)
+	plt.plot(array, y, 'o', color='red', label="data")
+	plt.plot(array, ans, '--', color='blue', label="optimized data")
+	plt.legend()
 	plt.show()
