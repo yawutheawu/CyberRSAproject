@@ -81,8 +81,10 @@ def estimate():
 	y = []
 	for i in x:
 		y.append(int(rangeDict[str(i)]))
+	#https://www.geeksforgeeks.org/scipy-curve-fitting/
 	array = np.array(x)
 	equation = 3.45 * np.exp(1.334 * array) + np.random.normal(size=len(array))
+	print(test,array,equation)
 	param, param_cov = curve_fit(test, array, equation)
 	ans = (param[0] * (np.exp(param[1] * x)))
 	plt.ylabel('Time (seconds)')
