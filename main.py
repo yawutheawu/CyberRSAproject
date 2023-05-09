@@ -7,7 +7,6 @@ import time
 import timeCalc
 #RSA Demo
 
-
 def struct():
 	text = input(
 	 "Are you running demo(1), Generating messenger keypairs(2), messager(3), random brute force(4), or do a runtime estimate(5)?: "
@@ -18,30 +17,7 @@ def struct():
 		print("Please input a number")
 		struct()
 	if (text == 1):
-		startTime = time.time()
-		keyPair = RSAdemo.generateKeys(250, 500)
-		public_key = keyPair[0]
-		private_key = keyPair[1]
-		print(keyPair)
-		message = "030-88-62**"
-		encrypted = RSAdemo.encryptRSA(public_key, message)
-		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
-		str_dec = ""
-		for i in decrypted:
-			str_dec += i
-		endTime = time.time()
-		totalTime = endTime - startTime
-		print("Actual Message: " + message)
-		encrypted = RSAdemo.encryptRSA(public_key, message)
-		print("Encrypted Message: " + str(encrypted))
-		decrypted = RSAdemo.decryptRSA(private_key, encrypted)
-		print("Decrypted Message: " + str(decrypted))
-		print("Decrypted and concatenated: ", end="")
-		for i in decrypted:
-			print(i, end="")
-		print()
-		print('Execution time: ' + str(round(totalTime, 4)) + " seconds")
-		timeCalc.addTo(public_key[0], totalTime)
+		RSAdemo.forReps(300,700)
 		struct()
 	elif (text == 2):
 		SenderKeypair = RSAdemo.generateKeys(250, 500)

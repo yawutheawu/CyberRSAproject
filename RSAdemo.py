@@ -1,10 +1,10 @@
 #Derek Johnson & Maykl Yakubovsky
-#2/27/2023 Cybersecurity Project - RSA encryption demo/walkthrough
+#5/3/2023 Cybersecurity Project - RSA Encryption Demo/Walkthrough
 
-import rsa as rsa
+import time
+import timeCalc
 import numpy as np
 import random as rand
-import math as math
 
 
 def is_prime(n):
@@ -18,7 +18,7 @@ def is_prime(n):
 
 
 def generateKeys(bottomRange=100, topRange=500):
-	#based on https://security.stackexchange.com/questions/25631/crack-plain-rsa-given-p-q-and-e and https://www.pythonpool.com/rsa-encryption-python/ and https://gist.github.com/juanplopes/6908681
+	#Based On: https://security.stackexchange.com/questions/25631/crack-plain-rsa-given-p-q-and-e and https://www.pythonpool.com/rsa-encryption-python/ and https://gist.github.com/juanplopes/6908681
 	primes = [i for i in range(bottomRange, topRange) if is_prime(i)]
 	p = rand.choice(primes)
 	del primes[primes.index(p)]
@@ -38,6 +38,7 @@ def generateKeys(bottomRange=100, topRange=500):
 
 
 #https://www.di-mgt.com.au/rsa_alg.html
+
 def encryptRSA(public_key, text):
 	plain = []
 	for i in text:
@@ -56,3 +57,29 @@ def decryptRSA(private_key, cipherText):
 		tempHold = tempHold % private_key[0]
 		decipher.append(chr(tempHold))
 	return decipher
+
+def forReps(x,y):
+	startTime = time.time()
+	keyPair = generateKeys(x, y)
+	public_key = keyPair[0]
+	private_key = keyPair[1]
+	print(keyPair)
+	message = "030-88-62**"
+	encrypted = encryptRSA(public_key, message)
+	decrypted = decryptRSA(private_key, encrypted)
+	str_dec = ""
+	for i in decrypted:
+		str_dec += i
+	endTime = time.time()
+	totalTime = endTime - startTime
+	print("Actual Message: " + message)
+	encrypted = encryptRSA(public_key, message)
+	print("Encrypted Message: " + str(encrypted))
+	decrypted = decryptRSA(private_key, encrypted)
+	print("Decrypted Message: " + str(decrypted))
+	print("Decrypted and concatenated: ", end="")
+	for i in decrypted:
+		print(i, end="")
+	print()
+	print('Execution time: ' + str(round(totalTime, 4)) + " seconds")
+	timeCalc.addTo(public_key[0], totalTime)
