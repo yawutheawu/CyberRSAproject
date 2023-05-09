@@ -19,9 +19,9 @@ def test(x, a, b):
 def estimate():
 	print("Starting Estimations")
 
-	RSAdemo.forReps(251, 257)
-	RSAdemo.forReps(503, 509)
-	RSAdemo.forReps(1009, 1013)
+	RSAdemo.forReps(250, 258)
+	RSAdemo.forReps(502, 510)
+	RSAdemo.forReps(1008, 1014)
 	RSAdemo.forReps(1000, 1500)
 	RSAdemo.forReps(750, 1000)
 	RSAdemo.forReps(500, 750)
