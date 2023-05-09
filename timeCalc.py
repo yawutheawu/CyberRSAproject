@@ -85,7 +85,7 @@ def estimate():
 	array = x
 	equation = []
 	for i in array:
-		equation.append(3.45 * (1.334**i) + np.random.normal(size=len(array)))
+		equation.append(2.45 * (1.034**i) + np.random.normal(size=len(array)))
 	param, param_cov = curve_fit(test, array, equation)
 	ans = (param[0] * (np.exp(param[1] * x)))
 	plt.ylabel('Time (seconds)')
