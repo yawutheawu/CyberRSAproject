@@ -22,7 +22,7 @@ def estimate():
 	RSAdemo.forReps(250, 258)
 	RSAdemo.forReps(502, 510)
 	RSAdemo.forReps(1008, 1014)
-	RSAdemo.forReps(1000, 1500)
+	RSAdemo.forReps(1000, 1200)
 	RSAdemo.forReps(750, 1000)
 	RSAdemo.forReps(500, 750)
 	RSAdemo.forReps(350, 500)
