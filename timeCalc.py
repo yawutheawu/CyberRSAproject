@@ -40,7 +40,9 @@ def estimate():
 	#https://www.geeksforgeeks.org/scipy-curve-fitting/
 	plt.ylabel('Time (seconds)')
 	plt.xlabel("N value (p * q)")
+	plt.title('N size v.s. time to encrypt and decrypt', fontsize=14)
 	plt.xticks(x)
-	plt.plot(x, y, 'o', color='blue', label="data")
+	plt.plot(x, y, '-o', color='blue', linewidth=2, label="data")
+	plt.grid(True)
 	plt.legend()
 	plt.show()
