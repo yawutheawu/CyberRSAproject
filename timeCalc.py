@@ -7,7 +7,6 @@ import numpy as np
 #best fit a curve and then store the equation to estimate future times
 rangeDict = {}
 
-
 def addTo(Key, Value):
 	rangeDict[str(Key)] = Value
 
@@ -22,24 +21,30 @@ def estimate():
 	RSAdemo.forReps(250, 258)
 	RSAdemo.forReps(502, 510)
 	RSAdemo.forReps(1008, 1014)
-<<<<<<< HEAD
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(1000, 1500)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-	RSAdemo.forReps(250, 1000)
-=======
 	RSAdemo.forReps(1000, 1200)
->>>>>>> 4edb74d11ce20426242c182c7d5ccd90cbaf51ff
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
+	RSAdemo.forReps(250, 1500)
 	RSAdemo.forReps(750, 1000)
 	RSAdemo.forReps(500, 750)
 	RSAdemo.forReps(350, 500)
