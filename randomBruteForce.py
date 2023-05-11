@@ -3,6 +3,7 @@
 #https://www.di-mgt.com.au/rsa_alg.html
 
 import RSAdemo
+import time
 
 message = "Unciphered"
 real_public_key = [21473, 3265]  #generated numbers
@@ -11,6 +12,7 @@ real_private_key = [21473, 8545]  #generated numbers
 cipherText = RSAdemo.encryptRSA(real_public_key, message)
 
 #make a private generation in this file alone, so that it can be tested without interfering with the main or RSAdemo
+
 
 #FIX: try except needs to go for the generation, the printing is not the problem
 def makeGuess():
@@ -27,7 +29,7 @@ def makeGuess():
 		print("\n ideal: " + str(ideal_message) + ", generation: " + str(generation))
 	except:
 		print("\n Generated Invalid Unicode Character")
-    
+
 	while (generation != ideal_message):
 		print("Not Found Yet! Attempted Crack: " + str(generation))
 		keys = RSAdemo.generateKeys()
@@ -40,6 +42,7 @@ def makeGuess():
 	print("\n ideal: " + str(ideal_message) + ", generation: " + str(generation))
 	return True
 
+
 def prime_factor(n):
 	i = 2
 	while i * i <= n:
@@ -49,10 +52,11 @@ def prime_factor(n):
 			n //= i
 	return n
 
+
 def primeFactorizor(cipherText, publicKey, realText):
-	print("\n Factoring.", end = "")
+	print("\n Factoring.", end="")
 	primeFactors = prime_factor(publicKey[0])
-	print(".", end = "")
+	print(".", end="")
 	primeFactors2 = int(publicKey[0] / primeFactors)
 	print(".")
 	print(primeFactors)
@@ -66,8 +70,8 @@ def primeFactorizor(cipherText, publicKey, realText):
 	for i in unchipher:
 		decipher += i
 	if decipher == realText:
-		print("\n Complete: Deciphered text: " + str(decipher) + " , original text: " +
-		      str(realText))
+		print("\n Complete: Deciphered text: " + str(decipher) +
+		      " , original text: " + str(realText))
 	else:
 		print("\n Incomplete: Deciphered text: " + str(decipher) +
 		      " , original text: " + str(realText))
@@ -75,10 +79,11 @@ def primeFactorizor(cipherText, publicKey, realText):
 
 #privatekey = (key_pair 1) = [n, d]  = brute force senders private key
 
+
 def primeGuesser(cipherText, publicKey):
-	print("\n Factoring.", end = "")
+	print("\n Factoring.", end="")
 	primeFactors = prime_factor(publicKey[0])
-	print(".", end = "")
+	print(".", end="")
 	primeFactors2 = int(publicKey[0] / primeFactors)
 	print(".")
 	print(primeFactors)
@@ -104,3 +109,26 @@ def decryptRSA(private_key, cipherText):
 		print(chr(tempHold), end=" ")
 	print()
 	return decipher
+
+
+def primeTimer(realText, x=200, y=500):
+	import timeCalc
+	startTime = time.time()
+	keyPair = RSAdemo.generateKeys(x, y)
+	publicKey = keyPair[0]
+	cipherText = RSAdemo.encryptRSA(publicKey, realText)
+	primeFactors = prime_factor(publicKey[0])
+	primeFactors2 = int(publicKey[0] / primeFactors)
+	print(primeFactors)
+	print(primeFactors2)
+	phi = (primeFactors - 1) * (primeFactors2 - 1)
+	d = pow(publicKey[1], -1, phi)
+	unchipher = decryptRSA([primeFactors * primeFactors2, d], cipherText)
+	decipher = ""
+	for i in unchipher:
+		decipher += i
+	if decipher == realText:
+		endTime = time.time()
+		timeCalc.addToHack(publicKey[0], (endTime - startTime))
+	else:
+		print("unsuccessful")

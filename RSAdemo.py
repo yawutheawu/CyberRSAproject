@@ -2,7 +2,6 @@
 #5/3/2023 Cybersecurity Project - RSA Encryption Demo/Walkthrough
 
 import time
-import timeCalc
 import numpy as np
 import random as rand
 
@@ -36,8 +35,8 @@ def generateKeys(bottomRange=100, topRange=500):
 
 #https://www.geeksforgeeks.org/rsa-algorithm-cryptography/
 
-
 #https://www.di-mgt.com.au/rsa_alg.html
+
 
 def encryptRSA(public_key, text):
 	plain = []
@@ -58,7 +57,9 @@ def decryptRSA(private_key, cipherText):
 		decipher.append(chr(tempHold))
 	return decipher
 
-def forReps(x,y):
+
+def forReps(x, y):
+	import timeCalc
 	startTime = time.time()
 	keyPair = generateKeys(x, y)
 	public_key = keyPair[0]

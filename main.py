@@ -6,6 +6,8 @@ import Messages as m1
 import time
 import timeCalc
 #RSA Demo
+testingText = r"030-88-62**"
+
 
 def struct():
 	text = input(
@@ -17,7 +19,7 @@ def struct():
 		print("Please input a number")
 		struct()
 	if (text == 1):
-		RSAdemo.forReps(300,700)
+		RSAdemo.forReps(300, 700)
 		struct()
 	elif (text == 2):
 		SenderKeypair = RSAdemo.generateKeys(250, 500)
@@ -51,29 +53,38 @@ def struct():
 				broken = randomBruteForce.makeGuess()
 			struct()
 		elif (text == 2):
-			realText = r'030-88-62**'
 			keyPair = RSAdemo.generateKeys(5000, 10000)
 			publicKey = keyPair[0]
 			private_key = keyPair[1]  #just in case
-			cipherText = RSAdemo.encryptRSA(publicKey, realText)
+			cipherText = RSAdemo.encryptRSA(publicKey, testingText)
 			print("Cipertext: " + str(cipherText))
-			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
+			randomBruteForce.primeFactorizor(cipherText, publicKey, testingText)
 			struct()
 		elif (text == 2):
-			realText = r'030-88-62**'
 			keyPair = RSAdemo.generateKeys(5000, 10000)
 			publicKey = keyPair[0]
 			private_key = keyPair[1]  #just in case
-			cipherText = RSAdemo.encryptRSA(publicKey, realText)
+			cipherText = RSAdemo.encryptRSA(publicKey, testingText)
 			print("Cipertext: " + str(cipherText))
-			randomBruteForce.primeFactorizor(cipherText, publicKey, realText)
+			randomBruteForce.primeFactorizor(cipherText, publicKey, testingText)
 			struct()
 		else:
 			print("not an option")
 			struct()
 	elif (text == 5):
-		timeCalc.estimate()
-		struct()
+		text = input(
+		 "Do you want to estimate encrypt/decrypt (1) or brute force attacks (2)?: ")
+		try:
+			text = int(text)
+		except:
+			print("input a number")
+			struct()
+		if text == 1:
+			timeCalc.estimate()
+			struct()
+		if text == 2:
+			timeCalc.fellasBeHacking(testingText)
+			struct()
 	else:
 		print("Not an option")
 		struct()
