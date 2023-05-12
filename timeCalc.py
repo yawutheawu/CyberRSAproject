@@ -9,10 +9,13 @@ import numpy as np
 #best fit a curve and then store the equation to estimate future times (did not do this just making curves to show the exponential increase in time)
 rangeDict = {}
 hackDict = {}
-with open("rangeDict.json", "r") as f:
-	rangeDict = json.load(f)
-with open("hackDict.json", "r") as f:
-	hackDict = json.load(f)
+
+def setHack(dict):
+	hackDict = dict
+
+
+def setRange(dict):
+	rangeDict = dict
 
 
 def addTo(Key, Value):

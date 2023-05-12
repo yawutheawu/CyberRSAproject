@@ -5,9 +5,9 @@ import randomBruteForce
 import Messages as m1
 import time
 import timeCalc
+import mergeDicts
 #RSA Demo
 testingText = r"030-88-62**"
-
 
 def struct():
 	text = input(
