@@ -1,21 +1,30 @@
 import RSAdemo
 import matplotlib.pylab as plt
 import randomBruteForce
+import json
 import numpy as np
 
 #https://pynative.com/python-get-execution-time-of-program/
 #after getting the execution time for a few different sized keys,
-#best fit a curve and then store the equation to estimate future times
+#best fit a curve and then store the equation to estimate future times (did not do this just making curves to show the exponential increase in time)
 rangeDict = {}
 hackDict = {}
+with open("rangeDict.json", "r") as f:
+	rangeDict = json.load(f)
+with open("hackDict.json", "r") as f:
+	hackDict = json.load(f)
 
 
 def addTo(Key, Value):
 	rangeDict[str(Key)] = Value
+	with open("rangeDict.json", "w") as f:
+		json.dump(rangeDict, f)
 
 
 def addToHack(Key, Value):
 	hackDict[str(Key)] = Value
+	with open("hackDict.json", "w") as f:
+		json.dump(hackDict, f)
 
 
 def test(x, a, b):
@@ -24,16 +33,8 @@ def test(x, a, b):
 
 def estimate(text):
 	print("Starting Estimations")
-
-	RSAdemo.forReps(250, 258)
-	RSAdemo.forReps(502, 510)
-	RSAdemo.forReps(1008, 1014)
-	RSAdemo.forReps(1000, 1200)
-	RSAdemo.forReps(750, 1000)
-	RSAdemo.forReps(500, 750)
-	RSAdemo.forReps(350, 500)
-	RSAdemo.forReps(100, 350)
-
+	for i in range(100, 2000, 100):
+		RSAdemo.forReps(i, i + 150)
 	x = list(rangeDict.keys())
 	temp = []
 	for i in x:
@@ -56,13 +57,8 @@ def estimate(text):
 
 def fellasBeHacking(text="testing"):
 	print("Hackathon")
-	randomBruteForce.primeTimer(text, 0, 150)
-	randomBruteForce.primeTimer(text, 150, 250)
-	randomBruteForce.primeTimer(text, 250, 350)
-	randomBruteForce.primeTimer(text, 350, 450)
-	randomBruteForce.primeTimer(text, 450, 550)
-	randomBruteForce.primeTimer(text, 550, 650)
-	randomBruteForce.primeTimer(text, 650, 750)
+	for i in range(100, 3500, 100):
+		randomBruteForce.primeTimer(text, i, i + 150)
 	x = list(hackDict.keys())
 	temp = []
 	for i in x:

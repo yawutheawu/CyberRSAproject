@@ -80,7 +80,7 @@ def struct():
 			print("input a number")
 			struct()
 		if text == 1:
-			timeCalc.estimate()
+			timeCalc.estimate(testingText)
 			struct()
 		if text == 2:
 			timeCalc.fellasBeHacking(testingText)
