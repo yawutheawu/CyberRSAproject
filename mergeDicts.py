@@ -29,5 +29,5 @@ empty = {}
 
 with open("tempHack.json", "w") as f:
 	json.dump(empty, f)
-with open("hackDict.json", "w") as f:
+with open("tempRange.json", "w") as f:
 	json.dump(empty, f)
