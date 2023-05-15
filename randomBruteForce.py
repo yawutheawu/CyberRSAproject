@@ -3,6 +3,7 @@
 #https://www.di-mgt.com.au/rsa_alg.html
 
 import RSAdemo
+import timeCalc
 import time
 
 message = "Unciphered"
@@ -54,6 +55,7 @@ def prime_factor(n):
 
 
 def primeFactorizor(cipherText, publicKey, realText):
+	startTime = time.time()
 	print("\n Factoring.", end="")
 	primeFactors = prime_factor(publicKey[0])
 	print(".", end="")
@@ -66,6 +68,8 @@ def primeFactorizor(cipherText, publicKey, realText):
 		print("\n Phi check success!")
 	d = pow(publicKey[1], -1, phi)
 	unchipher = decryptRSA([primeFactors * primeFactors2, d], cipherText)
+	endTime = time.time()
+	timeCalc.addToHack(publicKey[0], endTime - startTime)
 	decipher = ""
 	for i in unchipher:
 		decipher += i
@@ -81,6 +85,7 @@ def primeFactorizor(cipherText, publicKey, realText):
 
 
 def primeGuesser(cipherText, publicKey):
+	startTime = time.time()
 	print("\n Factoring.", end="")
 	primeFactors = prime_factor(publicKey[0])
 	print(".", end="")
@@ -93,6 +98,8 @@ def primeGuesser(cipherText, publicKey):
 		print("\n Phi check success!")
 	d = pow(publicKey[1], -1, phi)
 	unchipher = decryptRSA([primeFactors * primeFactors2, d], cipherText)
+	endTime = time.time()
+	timeCalc.addToHack(publicKey[0], endTime - startTime)
 	decipher = ""
 	for i in unchipher:
 		decipher += i

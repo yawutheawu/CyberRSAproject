@@ -16,6 +16,7 @@ for i in list(rangeDict.keys()):
 for i in list(list(tempRange.keys())):
 	newRange[i] = tempRange[i]
 newHack = {}
+
 for i in list(hackDict.keys()):
 	newHack[i] = hackDict[i]
 for i in list(list(tempHack.keys())):
