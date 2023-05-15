@@ -7,15 +7,20 @@ import numpy as np
 #https://pynative.com/python-get-execution-time-of-program/
 #after getting the execution time for a few different sized keys,
 #best fit a curve and then store the equation to estimate future times (did not do this just making curves to show the exponential increase in time)
-rangeDict = {}
+global rangeDict
+global hackDict
+
 hackDict = {}
+rangeDict = {}
 
 
 def setHack(dict):
+	global hackDict
 	hackDict = dict
 
 
 def setRange(dict):
+	global rangeDict
 	rangeDict = dict
 
 
@@ -37,8 +42,8 @@ def test(x, a, b):
 
 def estimate(text):
 	print("Starting Estimations")
-	for i in range(100, 1500, 100):
-		RSAdemo.forReps(i, i + 150)
+	for i in range(100, 200, 50):
+		RSAdemo.forReps(i, i + 100)
 	x = list(rangeDict.keys())
 	temp = []
 	for i in x:
@@ -61,8 +66,8 @@ def estimate(text):
 
 def fellasBeHacking(text="testing"):
 	print("Hackathon")
-	for i in range(100, 1500, 100):
-		randomBruteForce.primeTimer(text, i, i + 150)
+	for i in range(100, 200, 50):
+		randomBruteForce.primeTimer(text, i, i + 100)
 	x = list(hackDict.keys())
 	temp = []
 	for i in x:
