@@ -42,7 +42,7 @@ def test(x, a, b):
 
 def estimate(text):
 	print("Starting Estimations")
-	for i in range(100, 200, 50):
+	for i in range(10, 1200, 50):
 		RSAdemo.forReps(i, i + 100)
 	x = list(rangeDict.keys())
 	temp = []
@@ -66,7 +66,7 @@ def estimate(text):
 
 def fellasBeHacking(text="testing"):
 	print("Hackathon")
-	for i in range(100, 200, 50):
+	for i in range(10, 1200, 50):
 		randomBruteForce.primeTimer(text, i, i + 100)
 	x = list(hackDict.keys())
 	temp = []
